@@ -10,6 +10,8 @@ app.get("/", (req, res) => {
     res.send("Welcome to TRAFFIX API") ; 
 })
 
+app.use(express.json()) ; 
+
 app.use("/api/v1/auth", authRouter) ; 
 
 app.listen(PORT, async() => {

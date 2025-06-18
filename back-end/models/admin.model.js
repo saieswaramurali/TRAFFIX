@@ -20,8 +20,18 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Admin Password is required'],
     minLength: 6,
+    select: false,
+
   }
 }, { timestamps: true });
+
+adminSchema.set("toJSON", {
+  transform: function (doc, ret, options) {
+    delete ret.password;
+    return ret;
+  },
+});
+
 
 const Admin = mongoose.model('User', adminSchema);
 
